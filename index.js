@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const PreciseTimer = require('precise-timer');
 const sqlite = require('sqlite');
 
-async function start() {
+function start() {
     const blockChain = new BlockChain(486604799, 1);
     const genisisBlock = blockChain.createBlock([
         { test: "halods" },
@@ -26,7 +26,7 @@ async function start() {
 
     mine(block);
 }
-async function mine(block) {
+function mine(block) {
     let hashTime = 0;
     let iterations = 0;
     while (true) {
