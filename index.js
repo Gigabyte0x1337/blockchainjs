@@ -1,8 +1,6 @@
 const BlockChain = require("./src/blockchain");
 const crypto = require('crypto');
 
-
-
 const blockChain = new BlockChain(486604799, 1);
 const genisisBlock = blockChain.createBlock([
     { test: "halods" },
