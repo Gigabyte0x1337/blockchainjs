@@ -1,8 +1,5 @@
 const BlockChain = require("./src/blockchain");
 const crypto = require('crypto');
-const PreciseTimer = require('precise-timer');
-const sqlite = require('sqlite');
-
 function start() {
     const blockChain = new BlockChain(486604799, 1);
     const genisisBlock = blockChain.createBlock([
@@ -22,7 +19,6 @@ function start() {
     block.timestamp = 1508587685;
     block.nonce = 935890168;
     blockChain.addBlock(block);
-
 
     mine(block);
 }
