@@ -1,27 +1,28 @@
 const BlockChain = require("./src/blockchain");
 const crypto = require('crypto');
-function start() {
-    const blockChain = new BlockChain(486604799, 1);
-    const genisisBlock = blockChain.createBlock([
-        { test: "halods" },
-        { test: "halod" },
-        { test: "halos" },
-        { test: "haloa" },
-        { test: "halsod" },
-    ]);
-    genisisBlock.timestamp = 1508571924;
-    genisisBlock.nonce = 466991047;
-    blockChain.addBlock(genisisBlock);
 
-    const block = blockChain.createBlock([
-        { test: "halods" }
-    ]);
-    block.timestamp = 1508587685;
-    block.nonce = 935890168;
-    blockChain.addBlock(block);
 
-    mine(block);
-}
+const blockChain = new BlockChain(486604799, 1);
+const genisisBlock = blockChain.createBlock([
+    { test: "halods" },
+    { test: "halod" },
+    { test: "halos" },
+    { test: "haloa" },
+    { test: "halsod" },
+]);
+genisisBlock.timestamp = 1508571924;
+genisisBlock.nonce = 466991047;
+blockChain.addBlock(genisisBlock);
+
+const block = blockChain.createBlock([
+    { test: "halods" }
+]);
+block.timestamp = 1508587685;
+block.nonce = 935890168;
+blockChain.addBlock(block);
+
+mine(block);
+
 function mine(block) {
     let hashTime = 0;
     let iterations = 0;
@@ -38,4 +39,4 @@ function mine(block) {
         }
     }
 }
-start();
+
