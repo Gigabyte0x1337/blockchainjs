@@ -2,16 +2,16 @@ const BlockChain = require("./src/blockchain");
 const crypto = require('crypto');
 
 const blockChain = new BlockChain(486604799, 1);
-const genisisBlock = blockChain.createBlock([
+const genesisBlock = blockChain.createBlock([
     { test: "halods" },
     { test: "halod" },
     { test: "halos" },
     { test: "haloa" },
     { test: "halsod" },
 ]);
-genisisBlock.timestamp = 1508571924;
-genisisBlock.nonce = 466991047;
-blockChain.addBlock(genisisBlock);
+genesisBlock.timestamp = 1508571924;
+genesisBlock.nonce = 466991047;
+blockChain.addBlock(genesisBlock);
 
 const block = blockChain.createBlock([
     { test: "halods" }
