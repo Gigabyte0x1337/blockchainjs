@@ -19,12 +19,12 @@ const block = blockChain.createBlock([
 //block.timestamp = 1508587685;
 //block.nonce = 935890168;
 //blockChain.addBlock(block);
-
+const maxInt32 = 2147483647;
 function mine(block) {
     while (true) {
         block.nonce = 0;
         block.timestamp = Math.round(Date.now() / 1000);
-        while (block.nonce < 2147483647) {
+        while (block.nonce < maxInt32) {
             if (block.checkProofOfWork()) {
                 console.log(block.hash.toString("hex"));
                 debugger;
