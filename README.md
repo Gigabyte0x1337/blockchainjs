@@ -1,3 +1,3 @@
-# blockcainjs
+# blockchainjs
 
-The core functonality of a blockcain implemented in javascript/nodejs.
+The core functonality of a blockchain implemented in javascript/nodejs.
