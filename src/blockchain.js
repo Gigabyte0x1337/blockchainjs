@@ -3,7 +3,6 @@ const merkle = require('merkle');
 const Block = require('./block');
 
 module.exports = class BlockChain {
-
     constructor(bits, version) {
         this.bits = bits;
         this.version = version;
