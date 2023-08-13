@@ -3,7 +3,12 @@ const merkle = require('merkle');
 const Utils = require('./utils');
 
 module.exports = class Block {
-
+    get hash() {
+        const header = this.getHeader();
+        const headerHash = crypto.createHash('sha256').update(header).digest();
+        return crypto.createHash('sha256').update(headerHash).digest();
+    }
+    
     constructor(version, timestamp, hashPrevBlock, hashMerkleRoot, bits, transactions) {
         this.version = version;
         this.timestamp = timestamp;
@@ -26,6 +31,7 @@ module.exports = class Block {
         buffer.writeInt32LE(this.nonce, 4 + 32 + 32 + 4 + 4);
         return buffer;
     }
+    
     /**
      * 
      * @param {Buffer} buffer 
@@ -37,17 +43,15 @@ module.exports = class Block {
         });
         return buff;
     }
+    
     isValid() {
         return this.checkProofOfWork() && this.checkMerkleRoot();
     }
-    get hash() {
-        const header = this.getHeader();
-        const headerHash = crypto.createHash('sha256').update(header).digest();
-        return crypto.createHash('sha256').update(headerHash).digest();
-    }
+
     checkMerkleRoot() {
         return new Buffer(merkle('sha256').sync(this.transactions).root(), "hex").equals(this.hashMerkleRoot);
     }
+    
     checkProofOfWork() {
         const blockHash = this.hash;
         const hash = blockHash.readUIntBE(0, blockHash.byteLength);
